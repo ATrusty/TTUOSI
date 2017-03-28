@@ -7,6 +7,7 @@ function changestock(stock)
 console.log(stock.value);
 }
 </script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
 <h1>Open Source Investing</h1>
@@ -18,5 +19,17 @@ Choose your stock:
     <option value="BOFA">BOFA</option>
     <option value="GOOG">GOOG</option>
 </select>
+<script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyB4qsP4T_s9xGsfyhLdvQUF8wLZ9B_JOJ0",
+    authDomain: "ttuosi-5fe3b.firebaseapp.com",
+    databaseURL: "https://ttuosi-5fe3b.firebaseio.com",
+    storageBucket: "ttuosi-5fe3b.appspot.com",
+    messagingSenderId: "121985664214"
+  };
+  firebase.initializeApp(config);
+</script>
 </body>
 </html>
