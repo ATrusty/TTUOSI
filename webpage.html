@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+function changestock(stock)
+{
+console.log(stock.value);
+}
+</script>
+</head>
+<body>
+<h1>Open Source Investing</h1>
+<h2>TTU Simvestors</h2>
+<hr />
+Choose your stock:
+<select id="stock" name="stock" onchange="changestock(stock)">
+    <option value="APPL">APPL</option>
+    <option value="BOFA">BOFA</option>
+    <option value="GOOG">GOOG</option>
+</select>
+</body>
+</html>
