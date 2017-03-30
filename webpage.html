@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<script src="https://d3js.org/d3.v4.min.js"></script>
 <html>
 <head>
 <script type="text/javascript">
@@ -10,26 +11,34 @@ console.log(stock.value);
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
+<center>
 <h1>Open Source Investing</h1>
 <h2>TTU Simvestors</h2>
-<hr />
+<hr></hr>
 Choose your stock:
 <select id="stock" name="stock" onchange="changestock(stock)">
     <option value="APPL">APPL</option>
     <option value="BOFA">BOFA</option>
     <option value="GOOG">GOOG</option>
 </select>
+<button> Submit </button>
+</center>
 <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyB4qsP4T_s9xGsfyhLdvQUF8wLZ9B_JOJ0",
-    authDomain: "ttuosi-5fe3b.firebaseapp.com",
-    databaseURL: "https://ttuosi-5fe3b.firebaseio.com",
-    storageBucket: "ttuosi-5fe3b.appspot.com",
-    messagingSenderId: "121985664214"
-  };
-  firebase.initializeApp(config);
-</script>
+<style>
+    h3 {display:inline;padding-left:120px}
+    p,ol {display:inline;}
+</style>
+<h3> Portfolio Value </h3>
+<h3> Return(%) </h3>  
+<h3> Top Holdings </h3> 
+<h3> Individual Stocks + Twitter Sentiment </h3>   
+<h3> Trading Feed </h3>
+<br></br>
+<p style="padding-left:120px">$10,000</p>
+<p style="padding-left:190px">8.12%</p>
+<p style="padding-left:170px">List placeholder (ol)</p>
+<!--<ol><li>A</li><li>B</li><li>C</li></ol>-->
+<p style="padding-left:95px">Stock: ""</p>
+
 </body>
 </html>
