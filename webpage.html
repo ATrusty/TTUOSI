@@ -5,7 +5,7 @@
 <script type="text/javascript">
 function changestock(stock)
 {
-console.log(stock.value);
+console.log(stock.value); //will query database here
 }
 </script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
@@ -26,7 +26,7 @@ Choose your stock:
 <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
 <style>
     h3 {display:inline;padding-left:120px}
-    p,ol {display:inline;}
+    p,ol,table {display:inline;}
 </style>
 <h3> Portfolio Value </h3>
 <h3> Return(%) </h3>  
@@ -39,6 +39,24 @@ Choose your stock:
 <p style="padding-left:170px">List placeholder (ol)</p>
 <!--<ol><li>A</li><li>B</li><li>C</li></ol>-->
 <p style="padding-left:95px">Stock: ""</p>
-
-</body>
+<table style="padding-left:360px">
+  <tr>
+    <td>APPL Traded for X</td>
+  </tr>
+  <tr>
+    <td>BOFA Traded for Y</td>
+  </tr>
+  <tr>
+    <td>GOOG Traded for Z</td>
+  </tr>
+  <tr>
+    <td>BOFA Traded for A</td>
+  </tr>
+  <tr>
+    <td>GOOG Traded for V</td>
+  </tr>
+  <tr>
+    <td>APPL Traded for B</td>
+  </tr>
+</table> </body>
 </html>
