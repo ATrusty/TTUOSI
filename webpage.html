@@ -3,9 +3,10 @@
 <html>
 <head>
 <script type="text/javascript">
-function changestock(stock)
+function getstock()
 {
-console.log(stock.value); //will query database here
+var s = document.getElementById("stock");
+console.log(s.value);
 }
 </script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
@@ -16,12 +17,12 @@ console.log(stock.value); //will query database here
 <h2>TTU Simvestors</h2>
 <hr></hr>
 Choose your stock:
-<select id="stock" name="stock" onchange="changestock(stock)">
+<select id="stock" name="stock">
     <option value="APPL">APPL</option>
     <option value="BOFA">BOFA</option>
     <option value="GOOG">GOOG</option>
 </select>
-<button> Submit </button>
+<button onclick="getstock()"> Submit </button>
 </center>
 <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
 <style>
