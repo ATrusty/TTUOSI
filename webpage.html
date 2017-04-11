@@ -6,7 +6,43 @@
 function getstock()
 {
 var s = document.getElementById("stock");
+graph();
 console.log(s.value); //will query database here
+}
+
+function graph()
+{
+var trace1 = {
+  x: [1, 2, 3, 4],
+  y: [10, 15, 13, 17],
+  //type: 'scatter'
+  mode: 'lines+markers',
+  name: 'Stock yield'
+};
+
+var trace2 = {
+  x: [1, 2, 3, 4],
+  y: [16, 5, 11, 9],
+  //type: 'scatter'
+  mode: 'lines+markers',
+  name: 'Sentiment'
+};
+
+var layout = 
+        {
+            xaxis:
+            {
+                title: 'Dates'
+            },
+            yaxis:
+            {
+                title: 'Improvement'
+            }
+        };
+
+var data = [trace1, trace2];
+
+Plotly.newPlot('tester', data, layout);
 }
 </script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
@@ -27,7 +63,7 @@ Choose your stock:
 <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
 <style>
     h3 {display:inline;padding-left:120px}
-    p,ol,table {display:inline;}
+    div,p,ol,table {display:inline;}
 </style>
 <h3> Portfolio Value </h3>
 <h3> Return(%) </h3>  
@@ -39,8 +75,8 @@ Choose your stock:
 <p style="padding-left:190px">8.12%</p>
 <p style="padding-left:170px">List placeholder (ol)</p>
 <!--<ol><li>A</li><li>B</li><li>C</li></ol>-->
-<p style="padding-left:95px">Stock: ""</p>
-<table style="padding-left:360px">
+<div id="tester" style="width:500px;height:400px;"></div>
+<table style="padding-left:0px">
   <tr>
     <td>APPL Traded for X</td>
   </tr>
