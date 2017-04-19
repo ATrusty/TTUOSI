@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
+    <title>
+        OpenSource Investing - TTU Simvestors
+    </title>
     <head>
+        <link rel="shortcut icon" href="favicon.ico" />
         <style>
             #cssTable td 
             {
@@ -12,6 +16,15 @@
                 vertical-align:middle;
                 margin: auto;
             }
+            header
+            {
+                background-color: lightblue;
+            }
+            img
+            {
+                float:left;
+            }
+
         </style>
         <script type="text/javascript">
         function getstock()
@@ -27,7 +40,6 @@
                 var trace1 = {
                 x: [0, 1, 2, 3, 4],
                 y: [0, 10, 15, 13, 17],
-                //type: 'scatter'
                 mode: 'lines+markers',
                 name: 'Stock yield'
                 };
@@ -35,7 +47,6 @@
                 var trace2 = {
                 x: [0, 1, 2, 3, 4],
                 y: [0, 16, 5, 11, 9],
-                //type: 'scatter'
                 mode: 'lines+markers',
                 name: 'Sentiment'
                 };
@@ -75,7 +86,6 @@
                 var trace1 = {
                 x: [0, 1, 2, 3, 4],
                 y: [0,10, 15, 13, 17],
-                //type: 'scatter'
                 mode: 'lines+markers',
                 name: 'Portfolio Growth'
                 };
@@ -112,14 +122,20 @@
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     </head>
 <body>
-    <center>
-        <h1>
-            Open Source Investing
-        </h1>
-        <h2>
-            TTU Simvestors
-        </h2>
+        <header class="header">
+            <center>
+                <h1>
+                    Open Source Investing
+                </h1>
+            </center>
+            <center>
+                <h2>
+                    TTU Simvestors
+                </h2>
+            </center>
         <hr></hr>
+        </header>
+        <center>
         Choose your stock:
         <select id="stock" name="stock">
             <option value="APPL">
@@ -132,10 +148,12 @@
                 GOOG
             </option>
         </select>
-        <button onclick="getstock()">
-            Submit 
-        </button>
-    </center>
+        </center>
+        <center>
+            <button onclick="getstock()">
+                Submit 
+            </button>
+        </center>
 
     <center> 
         <table id="cssTable">
