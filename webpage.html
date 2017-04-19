@@ -1,146 +1,171 @@
 <!DOCTYPE html>
-<script src="https://d3js.org/d3.v4.min.js"></script>
 <html>
-<head>
-<script type="text/javascript">
-function getstock()
-{
-var s = document.getElementById("stock");
-graph();
-console.log(s.value); //will get information from IB API here
-}
-
-function graph()
-{
-var trace1 = {
-  x: [1, 2, 3, 4],
-  y: [10, 15, 13, 17],
-  //type: 'scatter'
-  mode: 'lines+markers',
-  name: 'Stock yield'
-};
-
-var trace2 = {
-  x: [1, 2, 3, 4],
-  y: [16, 5, 11, 9],
-  //type: 'scatter'
-  mode: 'lines+markers',
-  name: 'Sentiment'
-};
-
-var layout = 
+    <head>
+        <script type="text/javascript">
+        function getstock()
         {
-            xaxis:
+                var s = document.getElementById("stock");
+                graph();
+                console.log(s.value); //will get information from IB API here
+        }
+
+        function graph()
             {
-                title: 'Dates'
-            },
-            yaxis:
-            {
-                title: 'Stock Yield & Sentiment'
-            }
-        };
+                var trace1 = {
+                x: [1, 2, 3, 4],
+                y: [10, 15, 13, 17],
+                //type: 'scatter'
+                mode: 'lines+markers',
+                name: 'Stock yield'
+                };
 
-var data = [trace1, trace2];
+                var trace2 = {
+                x: [1, 2, 3, 4],
+                y: [16, 5, 11, 9],
+                //type: 'scatter'
+                mode: 'lines+markers',
+                name: 'Sentiment'
+                };
 
-Plotly.newPlot('tester', data, layout);
-}
+                var layout = 
+                        {
+                            margin: 
+                            {
+                                l: 0,
+                                r: 0,
+                                b: 0,
+                                t: 0,
+                                pad: 4
+                            },
+                            xaxis:
+                            {
+                                title: 'Dates'
+                            },
+                            yaxis:
+                            {
+                                title: 'Stock Yield & Sentiment'
+                            }
+                        };
 
-function initdisplay()
-{
-var trace1 = {
-  x: [1,2,3,4],
-  y: [5,6,7,8],
-  //type: 'scatter'
-  mode: 'lines+markers',
-  name: 'Stock yield'
-};
-
-var trace2 = {
-  x: [],
-  y: [],
-  //type: 'scatter'
-  mode: 'lines+markers',
-  name: 'Sentiment'
-};
-
-var layout = 
-        {
-            xaxis:
-            {
-                title: 'Dates'
-            },
-            yaxis:
-            {
-                title: 'Improvement'
-            }
-        };
-
-var data = [trace1, trace2];
-
-Plotly.newPlot('tester', data, layout);
-}
-
-</script>
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-</head>
+                        var data = [trace1, trace2];
+                        Plotly.newPlot('tester', data, layout);
+        }
+        </script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    </head>
 <body>
-<center>
-<h1>Open Source Investing</h1>
-<h2>TTU Simvestors</h2>
-<hr></hr>
-Choose your stock:
-<select id="stock" name="stock">
-    <option value="APPL">APPL</option>
-    <option value="BOFA">BOFA</option>
-    <option value="GOOG">GOOG</option>
-</select>
-<button onclick="getstock()"> Submit </button>
+    <center>
+        <h1>
+            Open Source Investing
+        </h1>
+        <h2>
+            TTU Simvestors
+        </h2>
+        <hr></hr>
+        Choose your stock:
+        <select id="stock" name="stock">
+            <option value="APPL">
+                APPL
+            </option>
+            <option value="BOFA">
+                BOFA
+            </option>
+            <option value="GOOG">
+                GOOG
+            </option>
+        </select>
+        <button onclick="getstock()">
+            Submit 
+        </button>
+    </center>
+    <hr></hr>
+
+    <center> 
+        <table>
+            <tr>
+                <th>
+                    Portfolio Value
+                </th>
+                <th>
+                    Return (%)
+                </th>
+                <th>
+                    Top Holdings
+                </th>
+                <th>
+                    Stock Performance + Twitter Sentiment
+                </th>
+                <th>
+                    Trading Feed
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    $10,000
+                </td>
+                <td>
+                    8.12%
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <td>
+                                1. GOOG 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                2. BOFA
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                3. APPL 
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+        <td>
+            <div onload="graph();" id="tester" style="width:500px;height:400px;">
+            </div>
+        </td>
+        <td>
+            <table>
+                <tr>
+                    <td>
+                        APPL Traded for X
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        BOFA Traded for Y
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        GOOG Traded for Z
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        BOFA Traded for A
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        GOOG Traded for V
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        APPL Traded for B
+                    </td>
+                </tr>
+            </table> 
+</body>
+</td>
+</tr>
+</table> 
 </center>
-<script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
-<style>
-    h3 {display:inline;padding-left:120px}
-    p,ol,table {display:inline;}
-    div {display:inline;}
-</style>
-<h3> Portfolio Value </h3>
-<h3> Return(%) </h3>  
-<h3> Top Holdings </h3> 
-<h3> Individual Stocks + Twitter Sentiment </h3>   
-<h3> Trading Feed </h3>
-<br></br>
-<p style="padding-left:120px">$10,000</p>
-<p style="padding-left:190px">8.12%</p>
-<table style="padding-left:170px">
-<tr>
-<td>1. GOOG </td>
-</tr>
-<tr>
-<td>2. BOFA </td>
-</tr>
-<tr>
-<td>3. APPL </td>
-</tr>
-</table>
-<table style="padding-left:570px">
-  <tr>
-    <td>APPL Traded for X</td>
-  </tr>
-  <tr>
-    <td>BOFA Traded for Y</td>
-  </tr>
-  <tr>
-    <td>GOOG Traded for Z</td>
-  </tr>
-  <tr>
-    <td>BOFA Traded for A</td>
-  </tr>
-  <tr>
-    <td>GOOG Traded for V</td>
-  </tr>
-  <tr>
-    <td>APPL Traded for B</td>
-  </tr>
-</table> </body>
-<br></br>
-<div onload="graph();" id="tester" style="width:500px;height:400px;"></div>
+<hr></hr>
 </html>
