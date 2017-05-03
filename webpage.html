@@ -32,7 +32,7 @@
                 var s = document.getElementById("stock");
                 graph();
                 graphReturn();
-                console.log(s.value); //will get information from IB API here
+                console.log(s.value);
         }
 
         function graph()
@@ -117,6 +117,10 @@
 
                         var data = [trace1];
                         Plotly.newPlot('tester1', data, layout);
+        }
+        function getInp()
+        {
+            
         }
         </script>
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
