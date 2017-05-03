@@ -27,6 +27,7 @@
             }
         </style>
         <script type="text/javascript">
+        
         function getstock()
         {
                 var s = document.getElementById("stock");
@@ -82,11 +83,11 @@
                         Plotly.newPlot('tester', data, layout);
         }
         
-        function graphReturn()
+        function graphReturn(x,y)
             {
                 var trace1 = {
-                x: [0, 1, 2, 3, 4],
-                y: [0,10, 15, 13, 17],
+                x: x,
+                y: y,
                 mode: 'lines+markers',
                 name: 'Portfolio Growth'
                 };
@@ -119,10 +120,48 @@
                         var data = [trace1];
                         Plotly.newPlot('tester1', data, layout);
         }
+        
         function readFile()
         {
-            //console.log("in func");
+            var file="tst.txt";
+            var rawFile = new XMLHttpRequest();
+            rawFile.open("GET", file, false);
+            rawFile.onreadystatechange = function ()
+            {
+                if(rawFile.readyState === 4)
+                {
+                    if(rawFile.status === 200 || rawFile.status == 0)
+                    {
+                        var allText = rawFile.responseText;
+                    }
+                }
+            updateData(allText);    
+            }
+            rawFile.send(null);
         }
+        
+        function updateData(txt) //this will be the big function
+        {
+            var allData = txt.split('\n');
+            var xRet=[];
+            var yRet=[];
+            xRet=allData[0].split(',');
+            yRet=allData[1].split(',');
+            xRet.pop();
+            yRet.pop();
+            for(var i=0; i<xRet.length; i++) 
+            { 
+                xRet[i] = parseInt(xRet[i], 10);
+            }
+            for(var i=0; i<yRet.length; i++) 
+            { 
+                yRet[i] = parseInt(yRet[i], 10);
+            }
+            console.log(xRet);
+            console.log(yRet);
+            graphReturn(xRet,yRet);
+        }
+        
         </script>
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     </head>
