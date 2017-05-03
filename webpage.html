@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    <meta charset="utf-8">
     <title>
         OpenSource Investing - TTU Simvestors
     </title>
@@ -24,7 +25,6 @@
             {
                 float:left;
             }
-
         </style>
         <script type="text/javascript">
         function getstock()
@@ -32,6 +32,7 @@
                 var s = document.getElementById("stock");
                 graph();
                 graphReturn();
+                readFile();
                 console.log(s.value);
         }
 
@@ -118,9 +119,9 @@
                         var data = [trace1];
                         Plotly.newPlot('tester1', data, layout);
         }
-        function getInp()
+        function readFile()
         {
-         return true;   
+            //console.log("in func");
         }
         </script>
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
