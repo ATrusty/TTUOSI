@@ -38,18 +38,22 @@
                 document.getElementById("TFour").innerHTML = order[3][1];
                 document.getElementById("numTweets").innerHTML = order[getInd(s.value)][0]; //change value of number of tweets
         }
-        function changePV()
+        function changePV(inpPV)
         {
+            document.getElementById("profolioValue").innerHTML = inpPV;
             console.log("Portfolio value");
         }
-        function retPerc()
+        function retPerc(inpPer)
         {
+            document.getElementById("returnPercent").innerHTML = inpPer;
             console.log("returnPerc");
         }
-        function changeFeed()
+        function changeFeed(feedArr)
         {
+            //document.getElementById("rt1").innerHTML = feedArr[]
             console.log("feed");
         }
+        
         function getInd(stkInp)
         {
             if(stkInp == "TSLA")
@@ -303,7 +307,7 @@
                     $10,000
                 </td>
                 <td id="returnPercent">
-                    <mark>8.12%</mark>
+                    <mark id="returnPercent">8.12</mark><mark>%</mark>
                     <div id="tester1" style="width:550px;height:350px;">
                         <script type="text/javascript">
                             graphReturn();
