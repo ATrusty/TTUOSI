@@ -31,9 +31,12 @@
         function getstock()
         {
                 var s = document.getElementById("stock");
+                var order = getOrder();
                 document.getElementById("numTweets").innerHTML = data[getInd(s.value)][0]; //change value of number of tweets
-                console.log(data[0]);
-                getOrder();
+                document.getElementById("TOne").innerHTML = order[0][1];
+                document.getElementById("TTwo").innerHTML = order[1][1];
+                document.getElementById("TThree").innerHTML = order[2][1];
+                document.getElementById("TFour").innerHTML = order[3][1];
         }
         
         function getInd(stkInp)
@@ -220,6 +223,7 @@
                 
                 
             arrRet.reverse();
+            
             return arrRet;
             
         }
