@@ -27,16 +27,21 @@
             }
         </style>
         <script type="text/javascript">
-        var data = [];
+        var dataTotal = [];
         function getstock()
         {
                 var s = document.getElementById("stock");
                 var order = getOrder();
-                document.getElementById("numTweets").innerHTML = data[getInd(s.value)][0]; //change value of number of tweets
                 document.getElementById("TOne").innerHTML = order[0][1];
                 document.getElementById("TTwo").innerHTML = order[1][1];
                 document.getElementById("TThree").innerHTML = order[2][1];
                 document.getElementById("TFour").innerHTML = order[3][1];
+                document.getElementById("numTweets").innerHTML = order[getInd(s.value)][0]; //change value of number of tweets
+                for(var i=0;i<4;i++)
+                {
+                    console.log(dataTotal[i]);
+                }
+                
         }
         
         function getInd(stkInp)
@@ -45,11 +50,11 @@
             {
                 return 0;
             }
-            else if(stkInp == "AAPL")
+            else if(stkInp == "FB")
             {
                 return 1;
             }
-            else if(stkInp == "FB")
+            else if(stkInp == "BAC")
             {
                 return 2;
             }
@@ -197,13 +202,13 @@
             arrOfArr.push(facebook);
             arrOfArr.push(bac);
             
-            data = arrOfArr;
+            dataTotal = arrOfArr;
         }
         
         function getOrder()
         {
             var i;
-            var arrRet = data;
+            var arrRet = dataTotal;
             arrRet.sort();
             var swapped;
             do 
