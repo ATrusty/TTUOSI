@@ -169,10 +169,14 @@
             apple[2]= parseFloat(apple[2]);
             facebook[2]= parseFloat(facebook[2]);
             bac[2]= parseFloat(bac[2]);
-            console.log(tesla);
-            console.log(apple);
-            console.log(facebook);
-            console.log(bac);
+            
+            arrOfArr.push(tesla);
+            arrOfArr.push(apple);
+            arrOfArr.push(facebook);
+            arrOfArr.push(bac);
+            
+            console.log(arrOfArr);
+            
         }
         
         </script>
@@ -195,14 +199,17 @@
         <center>
         Choose your stock:
         <select id="stock" name="stock">
-            <option value="APPL">
-                APPL
+            <option value="TSLA">
+                TSLA
             </option>
-            <option value="BOFA">
-                BOFA
+            <option value="AAPL">
+                AAPL
             </option>
-            <option value="GOOG">
-                GOOG
+            <option value="FB">
+                FB
+            </option>
+            <option value="BAC">
+                BAC
             </option>
         </select>
         </center>
@@ -309,7 +316,7 @@
 </table> 
 </center>
 <hr></hr>
-<footer style="background-color: lightblue">
+<footer>
     <img src="ttu.png" height="100" width="120"/>
 </footer>
 </html>
