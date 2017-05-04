@@ -33,6 +33,7 @@
                 var s = document.getElementById("stock");
                 document.getElementById("numTweets").innerHTML = data[getInd(s.value)][0]; //change value of number of tweets
                 console.log(data[0]);
+                getOrder();
         }
         
         function getInd(stkInp)
@@ -196,7 +197,32 @@
             data = arrOfArr;
         }
         
-        
+        function getOrder()
+        {
+            var i;
+            var arrRet = data;
+            arrRet.sort();
+            var swapped;
+            do 
+            {
+                swapped = false;
+                for (i=0; i < arrRet.length-1; i++) 
+                {
+                    if (arrRet[i][0] > arrRet[i+1][0])  //thanks to stackOverflow user ignatius-andrew for the basic outline of this algorithm.
+                    {
+                        var temp = arrRet[i];
+                        arrRet[i] = arrRet[i+1];
+                        arrRet[i+1] = temp;
+                        swapped = true;
+                    }
+                }
+            } while (swapped);
+                
+                
+            arrRet.reverse();
+            return arrRet;
+            
+        }
         
         </script>
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
