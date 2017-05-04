@@ -32,6 +32,7 @@
         {
                 var s = document.getElementById("stock");
                 document.getElementById("numTweets").innerHTML = data[getInd(s.value)][0]; //change value of number of tweets
+                console.log(data[0]);
         }
         
         function getInd(stkInp)
@@ -58,7 +59,7 @@
             {
                 var trace1 = {
                 x: [0, 1, 2, 3, 4],
-                y: [0, 10, 15, 13, 17],
+                y: [0, 1.5, 2.0, 2.5, 3.0],
                 mode: 'lines+markers',
                 name: 'Stock yield'
                 };
