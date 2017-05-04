@@ -27,16 +27,33 @@
             }
         </style>
         <script type="text/javascript">
-        
+        var data = [];
         function getstock()
         {
                 var s = document.getElementById("stock");
-                graph();
-                graphReturn();
-                readFile();
-                console.log(s.value);
+                document.getElementById("numTweets").innerHTML = data[getInd(s.value)][0]; //change value of number of tweets
         }
-
+        
+        function getInd(stkInp)
+        {
+            if(stkInp == "TSLA")
+            {
+                return 0;
+            }
+            else if(stkInp == "AAPL")
+            {
+                return 1;
+            }
+            else if(stkInp == "FB")
+            {
+                return 2;
+            }
+            else
+            {
+                return 3;
+            }
+        }
+        
         function graph()
             {
                 var trace1 = {
@@ -121,7 +138,7 @@
                         Plotly.newPlot('tester1', data, layout);
         }
         
-        function readFile()
+        function readFile() //need to call this on load
         {
             var file="output.txt";
             var rawFile = new XMLHttpRequest();
@@ -155,7 +172,7 @@
             facebook=allData[2].split(',');
             bac=allData[3].split(',');
             
-            tesla.pop(); //fix input
+            tesla.pop(); //fix input for all arrays
             apple.pop();
             facebook.pop();
             bac.pop();
@@ -175,14 +192,15 @@
             arrOfArr.push(facebook);
             arrOfArr.push(bac);
             
-            console.log(arrOfArr);
-            
+            data = arrOfArr;
         }
+        
+        
         
         </script>
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     </head>
-<body>
+<body onload="readFile()">
         <header class="header">
             <center>
                 <h1>
@@ -253,18 +271,23 @@
                 <td>
                     <table>
                         <tr>
-                            <td id="top">
-                                1. GOOG 
+                            <td>
+                                <b>1.</b> <b id="TOne"></b> 
                             </td>
                         </tr>
                         <tr>
-                            <td id="mid">
-                                2. BOFA
+                            <td>
+                               <b>2.</b> <b id="TTwo"></b>
                             </td>
                         </tr>
                         <tr>
-                            <td id="low">
-                                3. APPL 
+                            <td>
+                                <b>3.</b> <b id="TThree"></b> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>4.</b> <b id="TFour"><b> 
                             </td>
                         </tr>
                     </table>
