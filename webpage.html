@@ -27,16 +27,33 @@
             }
         </style>
         <script type="text/javascript">
-        var dataTotal = [];
+        var val = [];
+        var valHours = [];
         function getstock()
         {
                 var s = document.getElementById("stock");
-                var order = getOrder();
+                if(s.value == "FB")
+                {
+                    readFile("fbHistory.txt");
+                }
+                else if(s.value == "TSLA")
+                {
+                    readFile("tslaHistory.txt");
+                }
+                else if(s.value == "AAPL")
+                {
+                    readFile("aaplHistory.txt");
+                }
+                else
+                {
+                    readFile("bacHistory.txt");
+                }
+                /*var order = getOrder();
                 document.getElementById("TOne").innerHTML = order[0][1];
                 document.getElementById("TTwo").innerHTML = order[1][1];
                 document.getElementById("TThree").innerHTML = order[2][1];
                 document.getElementById("TFour").innerHTML = order[3][1];
-                document.getElementById("numTweets").innerHTML = order[getInd(s.value)][0]; //change value of number of tweets
+                document.getElementById("numTweets").innerHTML = order[getInd(s.value)][0]; //change value of number of tweets*/
         }
         function changePV(inpPV)
         {
@@ -80,9 +97,15 @@
                 x: [0, 1, 2, 3, 4],
                 y: [0, 1.5, 2.0, 2.5, 3.0],
                 mode: 'lines+markers',
-                name: 'Stock yield'
+                name: 'Sentiment'
                 };
 
+                var trace2 = {
+                x: [0, 1, 2, 3, 4],
+                y: [0, 16, 5, 11, 9],
+                mode: 'lines+markers',
+                name: 'Performance of stock'
+                };
 
                 var layout = 
                         {
@@ -105,12 +128,12 @@
                             },
                             yaxis:
                             {
-                                title: 'Sentiment',
+                                title: 'Performance of stock + Sentiment',
 
                             }
                         };
 
-                        var data = [trace1];
+                        var data = [trace1, trace2];
                         Plotly.newPlot('tester', data, layout);
         }
         
@@ -165,10 +188,25 @@
                         var allText = rawFile.responseText;
                     }
                 }
-            
-            //updateData(allText);    
+            //console.log(allText);
+            updateSentHour(allText);    
             }
             rawFile.send(null);
+        }
+        
+        function updateSentHour(text)
+        {
+            text = text.split('\n');
+            text.pop();
+            var i;
+            for(i=0;i<text.length;i++)
+            {
+                val[i] = parseFloat(text[i]);
+                valHours[i] = i;
+            }
+            console.log(val);
+            console.log(valHours);
+            
         }
         
         function updateData(txt) //this will be the big function
@@ -290,7 +328,7 @@
                     Most Tweets
                 </th>
                 <th>
-                    Stock Performance + Twitter Sentiment
+                    Twitter Sentiment
                 </th>
                 <th>
                     Trading Feed
