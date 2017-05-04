@@ -76,19 +76,13 @@
         
         function graph()
             {
-                var trace1 = {
+                var trace1 = { //Sentiment
                 x: [0, 1, 2, 3, 4],
                 y: [0, 1.5, 2.0, 2.5, 3.0],
                 mode: 'lines+markers',
                 name: 'Stock yield'
                 };
 
-                var trace2 = {
-                x: [0, 1, 2, 3, 4],
-                y: [0, 16, 5, 11, 9],
-                mode: 'lines+markers',
-                name: 'Sentiment'
-                };
 
                 var layout = 
                         {
@@ -107,16 +101,16 @@
                             },
                             xaxis:
                             {
-                                title: 'Dates'
+                                title: 'Hours'
                             },
                             yaxis:
                             {
-                                title: 'Stock Yield & Sentiment',
+                                title: 'Sentiment',
 
                             }
                         };
 
-                        var data = [trace1, trace2];
+                        var data = [trace1];
                         Plotly.newPlot('tester', data, layout);
         }
         
@@ -158,9 +152,8 @@
                         Plotly.newPlot('tester1', data, layout);
         }
         
-        function readFile() //need to call this on load
+        function readFile(file) //need to call this on load
         {
-            var file="output.txt";
             var rawFile = new XMLHttpRequest();
             rawFile.open("GET", file, false);
             rawFile.onreadystatechange = function ()
@@ -172,7 +165,8 @@
                         var allText = rawFile.responseText;
                     }
                 }
-            updateData(allText);    
+            
+            //updateData(allText);    
             }
             rawFile.send(null);
         }
@@ -307,7 +301,7 @@
                     $10,000
                 </td>
                 <td id="returnPercent">
-                    <mark id="returnPercent">8.12</mark><mark>%</mark>
+                    <mark id="returnPercent"></mark><mark>%</mark>
                     <div id="tester1" style="width:550px;height:350px;">
                         <script type="text/javascript">
                             graphReturn();
