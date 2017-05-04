@@ -123,7 +123,7 @@
         
         function readFile()
         {
-            var file="tst.txt";
+            var file="output.txt";
             var rawFile = new XMLHttpRequest();
             rawFile.open("GET", file, false);
             rawFile.onreadystatechange = function ()
@@ -143,23 +143,36 @@
         function updateData(txt) //this will be the big function
         {
             var allData = txt.split('\n');
-            var xRet=[];
-            var yRet=[];
-            xRet=allData[0].split(',');
-            yRet=allData[1].split(',');
-            xRet.pop();
-            yRet.pop();
-            for(var i=0; i<xRet.length; i++) 
-            { 
-                xRet[i] = parseInt(xRet[i], 10);
-            }
-            for(var i=0; i<yRet.length; i++) 
-            { 
-                yRet[i] = parseInt(yRet[i], 10);
-            }
-            console.log(xRet);
-            console.log(yRet);
-            graphReturn(xRet,yRet);
+            var tesla=[];
+            var apple=[];
+            var facebook=[];
+            var bac=[];
+            
+            var arrOfArr = [];
+            
+            tesla=allData[0].split(',');
+            apple=allData[1].split(',');
+            facebook=allData[2].split(',');
+            bac=allData[3].split(',');
+            
+            tesla.pop(); //fix input
+            apple.pop();
+            facebook.pop();
+            bac.pop();
+            
+            tesla[0]= parseInt(tesla[0]);
+            apple[0]= parseInt(apple[0]);
+            facebook[0]= parseInt(facebook[0]);
+            bac[0]= parseInt(bac[0]);
+            
+            tesla[2]= parseFloat(tesla[2]);
+            apple[2]= parseFloat(apple[2]);
+            facebook[2]= parseFloat(facebook[2]);
+            bac[2]= parseFloat(bac[2]);
+            console.log(tesla);
+            console.log(apple);
+            console.log(facebook);
+            console.log(bac);
         }
         
         </script>
@@ -223,7 +236,7 @@
                     $10,000
                 </td>
                 <td id="returnPercent">
-                    8.12%
+                    <mark>8.12%</mark>
                     <div id="tester1" style="width:550px;height:350px;">
                         <script type="text/javascript">
                             graphReturn();
@@ -250,6 +263,7 @@
                     </table>
                 </td>
         <td>
+            Number of Tweets about this stock: <em id="numTweets"></em>
             <div onload="graph()" id="tester" style="width:550px;height:350px;">
                 <script type="text/javascript">
                     graph();
