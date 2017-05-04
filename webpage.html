@@ -37,10 +37,19 @@
                 document.getElementById("TThree").innerHTML = order[2][1];
                 document.getElementById("TFour").innerHTML = order[3][1];
                 document.getElementById("numTweets").innerHTML = order[getInd(s.value)][0]; //change value of number of tweets
-                
-                
         }
-        
+        function changePV()
+        {
+            console.log("Portfolio value");
+        }
+        function retPerc()
+        {
+            console.log("returnPerc");
+        }
+        function changeFeed()
+        {
+            console.log("feed");
+        }
         function getInd(stkInp)
         {
             if(stkInp == "TSLA")
