@@ -29,24 +29,25 @@
         <script type="text/javascript">
         var val = [];
         var valHours = [];
+        var sent = [];
         function getstock()
         {
                 var s = document.getElementById("stock");
                 if(s.value == "FB")
                 {
-                    readFile("fbHistory.txt");
+                    readFile("twitterFacebook.txt");
                 }
                 else if(s.value == "TSLA")
                 {
-                    readFile("tslaHistory.txt");
+                    readFile("twitterTesla.txt");
                 }
                 else if(s.value == "AAPL")
                 {
-                    readFile("aaplHistory.txt");
+                    readFile("twitterApple.txt");
                 }
                 else
                 {
-                    readFile("bacHistory.txt");
+                    readFile("twitterBAC.txt");
                 }
                 /*var order = getOrder();
                 document.getElementById("TOne").innerHTML = order[0][1];
@@ -91,18 +92,18 @@
             }
         }
         
-        function graph()
+        function graph(a,x,y) //graph(valHours,val,sent);
             {
                 var trace1 = { //Sentiment
-                x: [0, 1, 2, 3, 4],
-                y: [0, 1.5, 2.0, 2.5, 3.0],
+                x: a,
+                y: y,
                 mode: 'lines+markers',
                 name: 'Sentiment'
                 };
 
                 var trace2 = {
-                x: [0, 1, 2, 3, 4],
-                y: [0, 16, 5, 11, 9],
+                x: a,
+                y: x,
                 mode: 'lines+markers',
                 name: 'Performance of stock'
                 };
@@ -175,7 +176,7 @@
                         Plotly.newPlot('tester1', data, layout);
         }
         
-        function readFile(file) //need to call this on load
+        function readFile(file)
         {
             var rawFile = new XMLHttpRequest();
             rawFile.open("GET", file, false);
@@ -188,25 +189,28 @@
                         var allText = rawFile.responseText;
                     }
                 }
-            //console.log(allText);
-            updateSentHour(allText);    
+            updateSentHourVal(allText);    
             }
             rawFile.send(null);
         }
         
-        function updateSentHour(text)
+        function updateSentHourVal(text)
         {
             text = text.split('\n');
-            text.pop();
+
             var i;
             for(i=0;i<text.length;i++)
             {
-                val[i] = parseFloat(text[i]);
-                valHours[i] = i;
+                text[i] = text[i].split(',');
             }
-            console.log(val);
-            console.log(valHours);
-            
+            text.pop();
+            for(i=0;i<text.length;i++)
+            {
+                val[i] = parseFloat(text[i][3]/10);
+                valHours[i] = i;
+                sent[i] = parseFloat(text[i][2]*10);
+            }
+            graph(valHours,val,sent);
         }
         
         function updateData(txt) //this will be the big function
