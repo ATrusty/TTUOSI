@@ -19,7 +19,10 @@
 import twitter4j.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import twitter4j.conf.ConfigurationBuilder;
 /**
  * @author Yusuke Yamamoto - yusuke at mac.com
@@ -51,16 +54,44 @@ public class SearchTweets {
             System.exit(-1);
         }
  //       Twitter twitter = new TwitterFactory().getInstance();
+
+
+        Map<String ,RateLimitStatus> status = new HashMap<String, RateLimitStatus>();
+
+
+
         try {
             Query query = new Query(args);
             QueryResult result;
+            status = twitter.getRateLimitStatus();
+
+            RateLimitStatus limitStat = status.get("/search/tweets");
+            int remaining = limitStat.getRemaining();
+            int remainingCounter = remaining;
             do {
+
+                System.out.println(remainingCounter);
+                  //  int secondsUntilReset = limitStat.getSecondsUntilReset();     IF we want to sleep
+                if (args == "Tesla" && remainingCounter <= 60 ){
+                        break;
+                    }
+                if (args == "Apple" && remainingCounter <= 40) {
+                    break;
+                }
+                if (args == "Facebook" && remainingCounter <= 20) {
+                    break;
+                }
+                if (args == "Bank of America" && remainingCounter == 0) {
+                    break;
+                }
+                --remainingCounter;
+
                 result = twitter.search(query);
                 List<Status> tweets = result.getTweets();
                 totalTweets.addAll(tweets);
-                for (Status tweet : tweets) {
-                    System.out.println(tweet.getText() + tweet.getCreatedAt() + tweet.getLang());
-                }
+                ///For Display Purposes Only
+              //  System.out.println(result.getTweets());
+
             } while ((query = result.nextQuery()) != null);
             return totalTweets;
         } catch (TwitterException te) {
@@ -71,7 +102,7 @@ public class SearchTweets {
         return totalTweets;
     }
     public static void main(String[] args) {
-        String str = new String("Google");
+        String str = new String("Houston");
 
         getTweets(str);
     }
