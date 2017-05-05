@@ -30,6 +30,7 @@
         var val = [];
         var valHours = [];
         var sent = [];
+        var portVal;
         function getstock()
         {
                 var s = document.getElementById("stock");
@@ -58,8 +59,7 @@
         }
         function changePV(inpPV)
         {
-            document.getElementById("profolioValue").innerHTML = inpPV;
-            console.log("Portfolio value");
+            document.getElementById("profolioValue").innerHTML = "$" + inpPV;
         }
         function retPerc(inpPer)
         {
@@ -192,6 +192,32 @@
             updateSentHourVal(allText);    
             }
             rawFile.send(null);
+        }
+        
+        function readReturn(file)
+        {
+            var rawFile = new XMLHttpRequest();
+            rawFile.open("GET", file, false);
+            rawFile.onreadystatechange = function ()
+            {
+                if(rawFile.readyState === 4)
+                {
+                    if(rawFile.status === 200 || rawFile.status == 0)
+                    {
+                        var allText = rawFile.responseText;
+                    }
+                }
+            updateReturn(allText);    
+            }
+            rawFile.send(null);
+        }
+        
+        function updateReturn(text)
+        {
+            text = text.split('\n');
+            text.pop();
+            console.log(parseFloat(text[text.length-1]));
+            changePV(parseFloat(text[text.length-1]));
         }
         
         function updateSentHourVal(text)
@@ -341,6 +367,7 @@
             <tr>
                 <td id="profolioValue">
                     $10,000
+                    <script>readReturn("totalWorth.txt");</script>
                 </td>
                 <td id="returnPercent">
                     <mark id="returnPercent"></mark><mark>%</mark>
