@@ -63,7 +63,9 @@ public class SentimentAnalyzer {
 
     public static void main(String[] args) {
         SentimentAnalyzer sentimentAnalyzer = new SentimentAnalyzer();
-        int sentiment = sentimentAnalyzer.findSentiment("The weather is excellent today");
+        int sentiment = sentimentAnalyzer.findSentiment("With an enchanting cast, beautifully crafted songs, " +
+                "and a painterly eye for detail, Beauty and the Beast offers a faithful " +
+                "yet fresh retelling that honors its beloved source material.");
         System.out.println(sentiment);
         System.out.println(sentimentAnalyzer.sentimentToString(sentiment));
 
