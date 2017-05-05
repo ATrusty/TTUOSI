@@ -49,14 +49,9 @@
                 }
                 else
                 {
-                    readFile("twitterBAC.txt");
+                    readFile("twitterBankOA.txt");
                 }
-                /*var order = getOrder();
-                document.getElementById("TOne").innerHTML = order[0][1];
-                document.getElementById("TTwo").innerHTML = order[1][1];
-                document.getElementById("TThree").innerHTML = order[2][1];
-                document.getElementById("TFour").innerHTML = order[3][1];
-                document.getElementById("numTweets").innerHTML = order[getInd(s.value)][0]; //change value of number of tweets*/
+            changeFeed();
         }
         function changePV(inpPV)
         {
@@ -69,8 +64,10 @@
         }
         function changeFeed(feedArr)
         {
-            //document.getElementById("rt1").innerHTML = feedArr[]
-            console.log("feed");
+            document.getElementById("TOne").innerHTML = "Facebook";
+            document.getElementById("TTwo").innerHTML = "Tesla";
+            document.getElementById("TThree").innerHTML = "Bank of America";
+            document.getElementById("TFour").innerHTML = "Apple";
         }
         
         function getInd(stkInp)

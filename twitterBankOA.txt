@@ -1,0 +1,4 @@
+25,Bank of America,1.24
+25,Bank of America,1.16
+25,Bank of America,1.24
+29,Bank of America,1.035982008995502,23.85
