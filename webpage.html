@@ -33,6 +33,7 @@
         var portVal;
         function getstock()
         {
+                readFeed();
                 readReturn("totalWorth.txt");
                 var s = document.getElementById("stock");
                 if(s.value == "FB")
@@ -208,6 +209,37 @@
             updateReturn(allText);    
             }
             rawFile.send(null);
+        }
+        
+        function readFeed()
+        {
+            var file = "feed.txt";
+            var rawFile = new XMLHttpRequest();
+            rawFile.open("GET", file, false);
+            rawFile.onreadystatechange = function ()
+            {
+                if(rawFile.readyState === 4)
+                {
+                    if(rawFile.status === 200 || rawFile.status == 0)
+                    {
+                        var allText = rawFile.responseText;
+                    }
+                }
+            updateFeed(allText);    
+            }
+            rawFile.send(null);
+        }
+        
+        function updateFeed(text)
+        {
+            text = text.split('\n');
+            text.pop();
+            document.getElementById("rt1").innerHTML = text[0];
+            document.getElementById("rt2").innerHTML = text[1];
+            document.getElementById("rt3").innerHTML = text[2];
+            document.getElementById("rt4").innerHTML = text[3];
+            document.getElementById("rt5").innerHTML = text[4];
+            document.getElementById("rt6").innerHTML = text[5];
         }
         
         function updateReturn(text)
@@ -411,32 +443,32 @@
             <table>
                 <tr>
                     <td>
-                        <em id="rt1">AAPL</em> traded for <em id="r1">X</em>
+                        <em id="rt1">AAPL</em>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <em id="rt2">TSLA</em> traded for <em id="r2">Y</em>
+                        <em id="rt2">TSLA</em>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <em id="rt3">BAC</em> traded for <em id="r3">Z</em>
+                        <em id="rt3">BAC</em>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <em id="rt4">AAPL</em> traded for <em id="r4">X</em>
+                        <em id="rt4">AAPL</em>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <em id="rt5">FB</em> traded for <em id="r5">Y</em>
+                        <em id="rt5">FB</em>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <em id="rt6">TSLA</em> traded for <em id="r6">Z</em>
+                        <em id="rt6">TSLA</em>
                     </td>
                 </tr>
             </table> 
