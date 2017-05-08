@@ -20,6 +20,16 @@
             <version>3.7.0</version>
             <classifier>models</classifier>
         </dependency>
+        <dependency>
+           <groupId>com.yahoofinance-api</groupId>
+            <artifactId>YahooFinanceAPI</artifactId>
+            <version>x.y.z</version>
+        </dependency>
+           <dependency>
+           <groupId>org.twitter4j</groupId>
+           <artifactId>twitter4j-core</artifactId>
+           <version>[4.0,)</version>
+       </dependency>
     </dependencies>
 
 
